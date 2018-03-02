@@ -1,0 +1,33 @@
+{% extends 'music/base.html' %}
+{% block title %}Album details{% endblock %}
+
+{% block body %}
+	<h2>Your album id: {{album.id}}</h2>
+	<h3>Here is the list of songs present in the album</h3>
+
+	<ul>
+		{% for song in album.song_set.all %}
+			<li>{{ song.title }}</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+<!--
+	{% if error_message %}
+		<h3>{{error_message}}</h3>
+	{% endif %}
+
+	<form action="{% url 'music:favourite' album.id %}" method="post">
+		{% csrf_token %}
+		{% for song in album.song_set.all %}
+			<input type="radio" id="song{{forloop.counter}}" name="song" value="{{song.id}}"/>
+			<label for="song{{forloop.counter}}">
+				{{ song.title }}
+				{% if song.is_favourite %}
+				<img src="https://ixquick-proxy.com/do/spg/show_picture.pl?l=english&rais=1&oiu=http%3A%2F%2Ficonshow.me%2Fmedia%2Fimages%2Fxmas%2Fchristmas-icon5%2F2%2Fstar-512.png&sp=0f2e90f83108047d4703970dc754a716"/>
+				{% endif %}
+			</label><br>
+		{% endfor %}<br>
+		<input type="submit" value="favourite" >
+	</form>
+-->
